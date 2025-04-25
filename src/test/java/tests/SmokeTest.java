@@ -3,6 +3,7 @@ package tests;
 import org.testng.annotations.Test;
 import pages.*;
 import utils.BaseTest;
+import utils.ConfigReader;
 
 public class SmokeTest extends BaseTest {
 
@@ -14,8 +15,8 @@ public class SmokeTest extends BaseTest {
         CheckOutPage checkoutPage = new CheckOutPage(page);
 
         // Step 1: Login
-        page.navigate("https://www.saucedemo.com/");
-        loginPage.login("standard_user", "secret_sauce");
+        page.navigate(ConfigReader.get("base.url"));
+        loginPage.login(ConfigReader.get("username"), ConfigReader.get("password"));
 
         // Step 2: Select Product and Add to Cart
         searchPage.searchProduct("Bike Light");  // Or pick a known item from the inventory

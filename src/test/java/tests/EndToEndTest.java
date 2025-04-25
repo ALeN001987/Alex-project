@@ -6,6 +6,7 @@ import pages.CheckOutPage;
 import pages.LoginPage;
 import pages.SearchPage;
 import utils.BaseTest;
+import utils.ConfigReader;
 
 public class EndToEndTest extends BaseTest {
 
@@ -17,8 +18,8 @@ public class EndToEndTest extends BaseTest {
         CheckOutPage checkoutPage = new CheckOutPage(page);
 
         // Step 1: Login
-        page.navigate("https://www.saucedemo.com/");
-        loginPage.login("standard_user", "secret_sauce");
+        page.navigate("https://fictionalstore.com/login");
+        loginPage.login(ConfigReader.get("username"), ConfigReader.get("password"));
 
         // Step 2: Search and Select Product
         searchPage.searchProduct("Backpack"); // or use direct access on saucedemo
